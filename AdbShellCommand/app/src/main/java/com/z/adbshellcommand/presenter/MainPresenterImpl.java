@@ -20,7 +20,7 @@ public class MainPresenterImpl implements IMainPresenter,IOnRunCommandFinishList
     @Override
     public void runAdbShellCommand(String strCommand) {
         mainView.showProgressDialog();
-        service.runAdbShellCommand(strCommand,this);
+        service.dealAdbShellCommand(strCommand, this);
     }
 
     @Override
