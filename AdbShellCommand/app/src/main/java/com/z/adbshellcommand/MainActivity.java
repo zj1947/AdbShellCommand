@@ -3,6 +3,7 @@ package com.z.adbshellcommand;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class MainActivity extends ActionBarActivity implements IMainView {
 
         edtPackageNm=(EditText)findViewById(R.id.edt_main_act_package_nm);
         tvResult=(TextView)findViewById(R.id.tv_main_act_result);
+        tvResult.setMovementMethod(ScrollingMovementMethod.getInstance());
         intProgressDialog();
     }
     private void initData() {
@@ -42,8 +44,8 @@ public class MainActivity extends ActionBarActivity implements IMainView {
     }
 
     public void onClickEvent(View view){
-         String strPackageNm=edtPackageNm.getText().toString().trim();
-        presenter.runAdbShellCommand(strPackageNm);
+         String strCommand=edtPackageNm.getText().toString().trim();
+        presenter.runAdbShellCommand(strCommand);
     }
 
     @Override

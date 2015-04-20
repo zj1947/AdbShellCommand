@@ -10,14 +10,14 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:text="adb shell命令示例：卸载应用"
+        android:text="adb shell命令示例：\n 卸载应用:pm uninstall+包名"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/edt_main_act_package_nm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="输入包名卸载"
+        android:hint="输入adb shell命令"
         android:layout_marginTop="@dimen/activity_vertical_margin"/>
     <Button
         android:id="@+id/btn_main_act_uninstall"
@@ -25,9 +25,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="卸载"/>
+        android:text="执行"/>
     <TextView
         android:id="@+id/tv_main_act_result"
+        android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
