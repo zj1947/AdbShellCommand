@@ -16,7 +16,7 @@ public class MainServiceImpl implements IMainService {
     @Override
     public void runAdbShellCommand(final String strCommand,final IOnRunCommandFinishListener listener) {
         if (TextUtils.isEmpty(strCommand)){
-            listener.OnInputError("package name can not be Empty");
+            listener.OnInputError("command can not be Empty");
             return;
         }
         new Thread(){
@@ -30,7 +30,6 @@ public class MainServiceImpl implements IMainService {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-
                         listener.OnRunComplete(strResult);
                     }
                 });
