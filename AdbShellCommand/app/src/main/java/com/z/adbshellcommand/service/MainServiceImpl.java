@@ -14,15 +14,14 @@ import com.z.adbshellcommand.util.ShellUtils;
 public class MainServiceImpl implements IMainService {
     private static final String COMMAND_RESULT_FORMAT="resultCode:%s,successMsg:%s,errorMsg:%s\n";
     @Override
-    public void runAdbShellCommand(final String strPackageNm,final IOnRunCommandFinishListener listener) {
-        if (TextUtils.isEmpty(strPackageNm)){
+    public void runAdbShellCommand(final String strCommand,final IOnRunCommandFinishListener listener) {
+        if (TextUtils.isEmpty(strCommand)){
             listener.OnInputError("package name can not be Empty");
             return;
         }
         new Thread(){
             @Override
             public void run(){
-                String strCommand="pm uninstall"+strPackageNm;
                 CommandResult result= ShellUtils.execCommand(strCommand, true, true);
                final String strResult= String.format(COMMAND_RESULT_FORMAT, result.result, result.successMsg, result.errorMsg);
 
