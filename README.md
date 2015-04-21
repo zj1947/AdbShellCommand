@@ -51,5 +51,5 @@
 >(2)util模块：包含ShellUtils工具类，adb命令操作集成在这个类中。在service层调用ShellUtils这个类的静态函数执行adb命令。<br>
 >(3)view模块：提供view操作接口，IMainView，接口的方法有：显示进度框，隐藏进度款，显示错误提示，显示执行命令结果。通过presenter模块调用,并在MainActivity中实现该接口，直接操作UI。<br>
 >(4)presenter模块：实现两个功能，1)调用service层处理业务；2)根据service层的处理结果，调用view操作接口，执行UI更新。该类实现两个接口，一个是IMainPresenter接口，功能是调用service层处理业务，在MainActivity中调用；2)是实现IOnRunCommandFinshListener，service层处理业务后会调用这个接口，而这个接口会继续调用view操作接口更新UI<br>
-具体的类图的如下：<br>
-![UML类图](https://raw.githubusercontent.com/zj1947/AdbShellCommand/master/UML%E7%B1%BB%E5%9B%BE.png"UML类图")
+#####具体的类图的如下：<br>
+![UML类图](https://raw.githubusercontent.com/zj1947/AdbShellCommand/master/UML%E7%B1%BB%E5%9B%BE.png "UML类图")
