@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.z.adbshellcommand.presenter.IMainPresenter;
 import com.z.adbshellcommand.presenter.MainPresenterImpl;
 import com.z.adbshellcommand.view.IMainView;
 
@@ -17,7 +18,7 @@ public class MainActivity extends ActionBarActivity implements IMainView {
     private EditText edtPackageNm;
     private TextView tvResult;
     private ProgressDialog progressDialog;
-    private MainPresenterImpl presenter;
+    private IMainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

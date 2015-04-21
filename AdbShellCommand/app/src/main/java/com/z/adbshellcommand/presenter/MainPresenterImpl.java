@@ -1,6 +1,7 @@
 package com.z.adbshellcommand.presenter;
 
 import com.z.adbshellcommand.IOnRunCommandFinishListener;
+import com.z.adbshellcommand.service.IMainService;
 import com.z.adbshellcommand.service.MainServiceImpl;
 import com.z.adbshellcommand.view.IMainView;
 
@@ -10,7 +11,7 @@ import com.z.adbshellcommand.view.IMainView;
 public class MainPresenterImpl implements IMainPresenter,IOnRunCommandFinishListener {
 
     private IMainView mainView;
-    private MainServiceImpl service;
+    private IMainService service;
 
     public MainPresenterImpl(IMainView mainView) {
         this.mainView = mainView;
