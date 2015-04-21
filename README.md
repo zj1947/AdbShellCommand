@@ -1,9 +1,9 @@
 ##AdbShellCommand
-在Android项目中执行adb Shell命令，通过java代码调用执行
+在Android项目中执行adb Shell命令，通过java代码调用执行，本程序采用MVP架构。
 ###Java中执行adb shell命令
 本项目中，adb shell命令执行的实现方法主要参考网文（[Android Java代码执行adb Shell命令](http://www.2cto.com/kf/201501/371925.html)）。
 文章中，把执行代码集成在ShellUtils工具类中，执行结果返回CommandResult这个类。ShellUtils与CommandResult这两个类的说明可查看[原文](http://www.2cto.com/kf/201501/371925.html)。<br>
-在java中直接调用ShellUtils的静态方法即可
+在java中直接调用ShellUtils的静态方法即可，但涉及到输入输出流的操作，最好是在工作线程中调用，否则会阻塞UI界面。
 ```JAVA
   //执行adb命令,
   //参数中strCommand为adb命令,第一个布尔值为执行该代码是否需要root,第二个布尔值是否需要返回结果
