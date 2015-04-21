@@ -2,19 +2,23 @@
 在Android项目中执行adb Shell命令，通过java代码调用执行
 ###Java中执行adb shell命令
 本项目中，adb shell命令执行的实现方法主要参考网文（[Android Java代码执行adb Shell命令](http://www.2cto.com/kf/201501/371925.html)）。
-文章中，把执行代码集成在ShellUtils工具类中，执行结果返回CommandResult这个类，直接调用静态方法即可。ShellUtils与CommandResult这两个类具体可查看[原文](http://www.2cto.com/kf/201501/371925.html)。
+文章中，把执行代码集成在ShellUtils工具类中，执行结果返回CommandResult这个类。ShellUtils与CommandResult这两个类的说明可查看[原文](http://www.2cto.com/kf/201501/371925.html)。<br>
+在java中直接调用ShellUtils的静态方法即可
 ```JAVA
-  //执行adb命令,参数中strCommand为adb命令,第一个布尔值为执行该代码是否需要root,第二个布尔值是否需要返回结果
+  //执行adb命令,
+  //参数中strCommand为adb命令,第一个布尔值为执行该代码是否需要root,第二个布尔值是否需要返回结果
   CommandResult result= ShellUtils.execCommand(strCommand, true, true);
 ```
 #####Java中执行adb shell命令关键代码
 ```JAVA
           //权限设置,需要root权限为"su"，否则为"sh";
-            Process p = Runtime.getRuntime().exec("su");
+            Process process = Runtime.getRuntime().exec("su");
             //获取输出流
-            DataOutputStream dataOutputStream=new DataOutputStream(p.getOutputStream());
+            DataOutputStream dataOutputStream=new DataOutputStream(process.getOutputStream());
             //将命令写入
-            dataOutputStream.writeBytes(cmd);
+            dataOutputStream.write(strCommand.getBytes());
+            dataOutputStream.writeBytes("\n");
+            dataOutputStream.writeBytes("exit\n");
             //提交命令
             dataOutputStream.flush();
             
